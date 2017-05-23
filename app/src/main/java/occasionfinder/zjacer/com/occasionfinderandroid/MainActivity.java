@@ -1,6 +1,5 @@
 package occasionfinder.zjacer.com.occasionfinderandroid;
 
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -10,18 +9,11 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -160,41 +152,6 @@ public class MainActivity extends AppCompatActivity {
                     return "SECTION 3";
             }
             return null;
-        }
-    }
-
-    private String uurl = "http://v-ie.uek.krakow.pl/~s188810/request.json";
-
-    private class ReadJSONTask extends AsyncTask<String, Void, String> {
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
-
-        @Override
-        protected void onPostExecute(String s) {
-        }
-
-        @Override
-        protected String doInBackground(String... urls) {
-            String response = "";
-
-            try {
-                URL url = new URL("http://v-ie.uek.krakow.pl/~s188810/request.json");
-                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                conn.connect();
-                InputStream is = conn.getInputStream();
-                BufferedReader br = new BufferedReader(new InputStreamReader(is));
-                String s = "";
-                while ((s = br.readLine()) != null) {
-                    response += s;
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            Log.d("TEST", response);
-            return response;
         }
     }
 }
