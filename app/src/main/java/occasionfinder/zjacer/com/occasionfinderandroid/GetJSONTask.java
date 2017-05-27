@@ -1,7 +1,6 @@
 package occasionfinder.zjacer.com.occasionfinderandroid;
 
 import android.os.AsyncTask;
-import android.util.Log;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -27,7 +26,6 @@ public class GetJSONTask extends AsyncTask<String, Void, JSONObject> {
     @Override
     protected void onPostExecute(JSONObject jsonObject) {
         super.onPostExecute(jsonObject);
-        Log.d("JSON_DATA", jsonObject.toString());
     }
 
     @Override
