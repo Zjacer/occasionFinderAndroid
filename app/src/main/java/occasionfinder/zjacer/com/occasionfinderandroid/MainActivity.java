@@ -13,8 +13,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import org.json.JSONException;
-
 public class MainActivity extends AppCompatActivity {
 
     /**
@@ -36,14 +34,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        DataGatherer dataGathered = new DataGatherer();
-        dataGathered.setShop("zadowolenie");
-        try {
-            String[] firstShopData = dataGathered.getData();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
