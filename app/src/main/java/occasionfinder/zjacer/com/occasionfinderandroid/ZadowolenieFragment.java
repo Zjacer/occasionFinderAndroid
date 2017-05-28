@@ -65,7 +65,7 @@ public class ZadowolenieFragment extends Fragment {
                 Intent intent = new Intent();
                 intent.setAction(Intent.ACTION_VIEW);
                 intent.addCategory(Intent.CATEGORY_BROWSABLE);
-                intent.setData(Uri.parse("https://www.x-kom.pl"));
+                intent.setData(Uri.parse("https://www.zadowolenie.pl"));
                 startActivity(intent);
             }
         });
