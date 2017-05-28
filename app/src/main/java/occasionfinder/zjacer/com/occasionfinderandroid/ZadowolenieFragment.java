@@ -6,7 +6,6 @@ import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,7 +38,6 @@ public class ZadowolenieFragment extends Fragment {
         if(shopData.isEmpty()) {
             try {
                 shopData = dataGathered.getShopData("zadowolenie");
-                Log.d("SKLEP", shopData.toString());
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -50,7 +48,7 @@ public class ZadowolenieFragment extends Fragment {
         TextView tv4 = (TextView) rootView.findViewById(R.id.zadowolenie_textView4);
 
         tv1.setText(shopData.get("zadowolenieItemName"));
-        tv4.setText("Nowa cena: " + shopData.get("zadowolenieItemNewPrice"));
+        tv4.setText("Nowa cena: " + shopData.get("zadowolenieItemNewPrice") + " zł");
         tv4.setTypeface(null, Typeface.BOLD_ITALIC);
 
         ImageView logo = (ImageView) rootView.findViewById(R.id.zadowolenie_imageView);

@@ -20,6 +20,7 @@
         android:id="@+id/alto_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:text="     "
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -78,5 +79,16 @@
         app:layout_constraintTop_toBottomOf="@+id/alto_textView"
         app:layout_constraintHorizontal_bias="0.513"
         app:layout_constraintVertical_bias="0.68" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="Mateusz Zając @ Zjacer"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.504" />
 
 </android.support.constraint.ConstraintLayout>
