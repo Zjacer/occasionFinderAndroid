@@ -1,5 +1,9 @@
 package occasionfinder.zjacer.com.occasionfinderandroid;
 
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -41,14 +45,42 @@ public class ZadowolenieFragment extends Fragment {
             }
         }
 
-        TextView tv = (TextView) rootView.findViewById(R.id.zadowolenie_textView);
-        tv.setText(shopData.get("zadowolenieItemName"));
-        ImageView iv = (ImageView) rootView.findViewById(R.id.zadowolenie_imageView2);
-        new DownloadImageTask(iv).execute(shopData.get("zadowolenieItemImageUrl"));
+        rootView.setBackgroundColor(Color.WHITE);
+        TextView tv1 = (TextView) rootView.findViewById(R.id.zadowolenie_textView);
+        TextView tv4 = (TextView) rootView.findViewById(R.id.zadowolenie_textView4);
 
-        iv.getLayoutParams().width = 500;
-        iv.getLayoutParams().height = 500;
+        tv1.setText(shopData.get("zadowolenieItemName"));
+        tv4.setText("Nowa cena: " + shopData.get("zadowolenieItemNewPrice"));
+        tv4.setTypeface(null, Typeface.BOLD_ITALIC);
+
+        ImageView logo = (ImageView) rootView.findViewById(R.id.zadowolenie_imageView);
+        ImageView iv = (ImageView) rootView.findViewById(R.id.zadowolenie_imageView2);
+
+        new DownloadImageTask(iv).execute(shopData.get("zadowolenieItemImageUrl"));
         iv.setAdjustViewBounds(true);
+
+        // User can click logo to open shop in web browser
+        logo.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_VIEW);
+                intent.addCategory(Intent.CATEGORY_BROWSABLE);
+                intent.setData(Uri.parse("https://www.x-kom.pl"));
+                startActivity(intent);
+            }
+        });
+
+        // User can click image to open item tab in web browser
+        iv.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_VIEW);
+                intent.addCategory(Intent.CATEGORY_BROWSABLE);
+                intent.setData(Uri.parse(shopData.get("zadowolenieItemLinkUrl")));
+                startActivity(intent);
+            }
+        });
+
         return rootView;
     }
 }

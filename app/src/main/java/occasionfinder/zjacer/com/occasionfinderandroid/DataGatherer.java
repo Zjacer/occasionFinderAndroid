@@ -29,7 +29,6 @@ public class DataGatherer {
 
         try {
             jsonObject = new GetJSONTask().execute(links.get(shopName)).get();
-            return null;
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
@@ -70,7 +69,7 @@ public class DataGatherer {
                 shopData.put("zadowolenieItemName", newObj.getString("data-offer-name"));
                 shopData.put("zadowolenieItemOldPrice", "ND");
                 shopData.put("zadowolenieItemNewPrice", newObj.getString("data-offer-price"));
-                shopData.put("zadowolenieItemLinkUrl", newObj.getString("href"));
+                shopData.put("zadowolenieItemLinkUrl", "https://www.zadowolenie.pl" + newObj.getString("href"));
                 newObj = jsonObject.getJSONObject("query").getJSONObject("results").getJSONObject("div").getJSONArray("div").getJSONObject(0).getJSONObject("a").getJSONObject("img");
                 shopData.put("zadowolenieItemImageUrl", "https://www.zadowolenie.pl" + newObj.getString("src"));
 

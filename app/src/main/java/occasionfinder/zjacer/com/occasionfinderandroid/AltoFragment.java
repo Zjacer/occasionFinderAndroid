@@ -1,5 +1,10 @@
 package occasionfinder.zjacer.com.occasionfinderandroid;
 
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -41,14 +46,46 @@ public class AltoFragment extends Fragment {
             }
         }
 
-        TextView tv = (TextView) rootView.findViewById(R.id.alto_textView);
-        tv.setText(shopData.get("altoItemName"));
-        ImageView iv = (ImageView) rootView.findViewById(R.id.alto_imageView2);
-        new DownloadImageTask(iv).execute(shopData.get("altoItemImageUrl"));
+        rootView.setBackgroundColor(Color.WHITE);
+        TextView tv1 = (TextView) rootView.findViewById(R.id.alto_textView);
+        TextView tv2 = (TextView) rootView.findViewById(R.id.alto_textView2);
+        TextView tv3 = (TextView) rootView.findViewById(R.id.alto_textView3);
+        TextView tv4 = (TextView) rootView.findViewById(R.id.alto_textView4);
 
-        iv.getLayoutParams().width = 500;
-        iv.getLayoutParams().height = 500;
+        tv1.setText(shopData.get("altoItemName"));
+        tv2.setText(shopData.get("altoItemOldPrice"));
+        tv2.setPaintFlags(tv2.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+        tv3.setText(shopData.get("altoItemNewPrice"));
+        tv4.setText("Oszczędzasz: " + PriceReductionCalculator.calculateReduction(shopData.get("altoItemOldPrice"), shopData.get("altoItemNewPrice")));
+        tv4.setTypeface(null, Typeface.BOLD_ITALIC);
+
+        ImageView logo = (ImageView) rootView.findViewById(R.id.alto_imageView);
+        ImageView iv = (ImageView) rootView.findViewById(R.id.alto_imageView2);
+
+        new DownloadImageTask(iv).execute(shopData.get("altoItemImageUrl"));
         iv.setAdjustViewBounds(true);
+
+        // User can click logo to open shop in web browser
+        logo.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_VIEW);
+                intent.addCategory(Intent.CATEGORY_BROWSABLE);
+                intent.setData(Uri.parse("https://www.al.to"));
+                startActivity(intent);
+            }
+        });
+
+        // User can click image to open item tab in web browser
+        iv.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_VIEW);
+                intent.addCategory(Intent.CATEGORY_BROWSABLE);
+                intent.setData(Uri.parse(shopData.get("altoItemLinkUrl")));
+                startActivity(intent);
+            }
+        });
 
         return rootView;
     }
