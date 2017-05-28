@@ -6,6 +6,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import org.json.JSONException;
 
@@ -38,6 +40,12 @@ public class XkomFragment extends Fragment {
                 e.printStackTrace();
             }
         }
+
+        TextView tv = (TextView) rootView.findViewById(R.id.xkom_textView);
+        tv.setText(shopData.get("xkomItemName"));
+
+        new DownloadImageTask((ImageView) rootView.findViewById(R.id.xkom_imageView2))
+                .execute(shopData.get("xkomItemImageUrl"));
 
         return rootView;
     }
