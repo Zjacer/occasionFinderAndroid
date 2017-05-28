@@ -6,6 +6,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import org.json.JSONException;
 
@@ -39,6 +41,14 @@ public class ZadowolenieFragment extends Fragment {
             }
         }
 
+        TextView tv = (TextView) rootView.findViewById(R.id.zadowolenie_textView);
+        tv.setText(shopData.get("zadowolenieItemName"));
+        ImageView iv = (ImageView) rootView.findViewById(R.id.zadowolenie_imageView2);
+        new DownloadImageTask(iv).execute(shopData.get("zadowolenieItemImageUrl"));
+
+        iv.getLayoutParams().width = 500;
+        iv.getLayoutParams().height = 500;
+        iv.setAdjustViewBounds(true);
         return rootView;
     }
 }

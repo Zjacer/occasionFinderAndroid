@@ -6,6 +6,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import org.json.JSONException;
 
@@ -38,6 +40,15 @@ public class AltoFragment extends Fragment {
                 e.printStackTrace();
             }
         }
+
+        TextView tv = (TextView) rootView.findViewById(R.id.alto_textView);
+        tv.setText(shopData.get("altoItemName"));
+        ImageView iv = (ImageView) rootView.findViewById(R.id.alto_imageView2);
+        new DownloadImageTask(iv).execute(shopData.get("altoItemImageUrl"));
+
+        iv.getLayoutParams().width = 500;
+        iv.getLayoutParams().height = 500;
+        iv.setAdjustViewBounds(true);
 
         return rootView;
     }
