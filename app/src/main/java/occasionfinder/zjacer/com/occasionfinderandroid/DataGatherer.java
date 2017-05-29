@@ -17,7 +17,7 @@ public class DataGatherer {
 
     Map<String,String> links = new HashMap<String, String>(){{
         put("xkom","https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20html%20where%20url%3D'https%3A%2F%2Fx-kom.pl'%20and%20xpath%3D'%2F%2F*%5B%40id%3D%22hotShot%22%5D%2Fdiv%5B2%5D%20%7C%20%2F%2F*%5B%40id%3D%22pageWrapper%22%5D%2Fdiv%5B4%5D%2Fdiv%5B1%5D%2Fdiv%5B1%5D%2Fscript%2Ftext()'&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys");
-        put("morele","https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20html%20where%20url%3D'https%3A%2F%2Fwww.morele.net'%20and%20xpath%3D'%2F%2F*%5B%40id%3D%22content%22%5D%2Fdiv%2Fdiv%5B2%5D%2Fdiv%5B2%5D%2Fdiv%5B1%5D%2Fdiv%5B2%5D%2Fdiv%2Fdiv%5B1%5D%2Fdiv%2Fdiv%2Fdiv'&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys");
+        put("morele", "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20html%20where%20url%3D'http%3A%2F%2Fmorele.net'%20and%20xpath%3D'%2F%2Fdiv%5Bcontains(%40class%2C%20%22top-wrap%22)%5D%2Fdiv%5Bcontains(%40class%2C%20%22row%22)%5D'&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys");
         put("zadowolenie", "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20html%20where%20url%3D%27http%3A%2F%2Fwww.zadowolenie.pl%2F%27%20and%20xpath%3D%27%2F%2F*%5B%40id%3D%22sb-site%22%5D%2Fmain%2Fdiv%5B2%5D%2Fdiv%5B1%5D%2Fdiv%2Fdiv%2Fsection%2Fdiv%2Fdiv%2Fdiv%2Fdiv%2Fdiv%27&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys");
         put("alto","https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20html%20where%20url%3D'https%3A%2F%2Fal.to'%20and%20xpath%3D'%2F%2F*%5B%40id%3D%22hotShot%22%5D%2Fdiv%5B2%5D%20%7C%20%2F%2F*%5B%40id%3D%22pageWrapper%22%5D%2Fdiv%5B4%5D%2Fdiv%5B1%5D%2Fdiv%5B1%5D%2Fscript%2Ftext()'&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys");
         put("amfora","test");
@@ -65,8 +65,8 @@ public class DataGatherer {
 
                 return shopData;
             case "morele":
-                jsonArr = jsonObject.getJSONObject("query").getJSONObject("results").getJSONArray("div");
-                newObj = jsonArr.getJSONObject(0).getJSONObject("a");
+                jsonArr = jsonObject.getJSONObject("query").getJSONObject("results").getJSONObject("div").getJSONArray("div");
+                newObj = jsonArr.getJSONObject(0).getJSONObject("div").getJSONObject("a");
                 shopData.put("moreleItemName", newObj.getString("title"));
                 shopData.put("moreleItemLinkUrl", newObj.getString("href"));
                 // Dealing with image url
@@ -74,10 +74,9 @@ public class DataGatherer {
                 urlStart = strWithUrl.indexOf("https:/", 14);
                 urlEnd = strWithUrl.indexOf(");", urlStart);
                 shopData.put("moreleItemImageUrl", strWithUrl.substring(urlStart, urlEnd));
-                jsonArr = jsonArr.getJSONObject(3).getJSONObject("div").getJSONArray("div");
+                jsonArr = jsonArr.getJSONObject(1).getJSONArray("div").getJSONObject(2).getJSONObject("div").getJSONArray("div");
                 shopData.put("moreleItemOldPrice", jsonArr.getJSONObject(0).getString("span"));
                 shopData.put("moreleItemNewPrice", jsonArr.getJSONObject(1).getString("span"));
-
                 return shopData;
             case "zadowolenie":
                 newObj = jsonObject.getJSONObject("query").getJSONObject("results").getJSONObject("div").getJSONArray("p").getJSONObject(1).getJSONObject("a");

@@ -13,10 +13,6 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-/**
- * Created by Zjacer @ zjacer@gmail.com.
- */
-
 public class GetJSONTask extends AsyncTask<String, Void, JSONObject> {
     JSONObject jsonObj = null;
 
