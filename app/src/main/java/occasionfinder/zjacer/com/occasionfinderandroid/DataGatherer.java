@@ -1,5 +1,7 @@
 package occasionfinder.zjacer.com.occasionfinderandroid;
 
+import android.util.Log;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -114,6 +116,7 @@ public class DataGatherer {
         setShop(shop);
         JSONObject jsonObj = dataFromUrlToJSONObject(shop);
         Map<String, String> map = getDataFromJSONobject(jsonObj);
+        Log.d("MAPA", shopName + "   " + map.toString());
         return map;
     }
 }

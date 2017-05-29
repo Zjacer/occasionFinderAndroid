@@ -7,7 +7,6 @@ import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,7 +39,6 @@ public class XkomFragment extends Fragment {
         if(shopData.isEmpty()) {
             try {
                 shopData = dataGathered.getShopData("xkom");
-                Log.d("SKLEP", shopData.toString());
             } catch (JSONException e) {
                 e.printStackTrace();
             }
