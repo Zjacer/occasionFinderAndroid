@@ -68,14 +68,16 @@ public class ZadowolenieFragment extends Fragment {
             }
         });
 
-        // User can click image to open item tab in web browser
-        iv.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
+        // User can long click image to open item tab in web browser
+        iv.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
                 Intent intent = new Intent();
                 intent.setAction(Intent.ACTION_VIEW);
                 intent.addCategory(Intent.CATEGORY_BROWSABLE);
                 intent.setData(Uri.parse(shopData.get("zadowolenieItemLinkUrl")));
                 startActivity(intent);
+                return true;
             }
         });
 
