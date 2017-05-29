@@ -1,16 +1,16 @@
--# occasionFinderAndroid (Okazjo-³owca)
- +# 1 Okazjo-³owca (occasionFinderAndroid)
- +G³ównym zadaniem aplikacji jest zbieranie informacji o okazjach (zwykle zwanymi 'Gor¹cy strza³' luib 'Okazja Dnia') z wybranych sklepów internetowych w Polsce i przedstawienie ich u¿ytkownikowi w jednym miejscu. Aplikacja wymaga do dzia³ania po³¹czenia z internetem w trakcie uruchamiania, jeœli takiego po³¹czenia nie ma, u¿ytkownik zostanie o tym odpowiednio poinformwoany.
+# occasionFinderAndroid (Okazjo-Å‚owca)
+# 1 Okazjo-Å‚owca (occasionFinderAndroid)
+GÅ‚Ã³wnym zadaniem aplikacji jest zbieranie informacji o okazjach (zwykle zwanymi 'GorÄ…cy strzaÅ‚' luib 'Okazja Dnia') z wybranych sklepÃ³w internetowych w Polsce i przedstawienie ich uÅ¼ytkownikowi w jednym miejscu. Aplikacja wymaga do dziaÅ‚ania poÅ‚Ä…czenia z internetem w trakcie uruchamiania, jeÅ›li takiego poÅ‚Ä…czenia nie ma, uÅ¼ytkownik zostanie o tym odpowiednio poinformwoany.
   
- +# 2. Funkcjonalnoœci aplikacji
- +Aplikacja posiada nastêpuj¹ce funkcjonalnoœci:
- +- zbieranie danych z poszczególnych sklepów internetowych
- +- prezentowanie tych odpowiednio przetworzonych danych u¿ytkownikowi
- +- klikniêcie w logo sklepu otwiera witrynê sklepu w przegl¹darce
- +- d³u¿sze klikniêcie w obrazek produktu otwiera jego kartê w przegl¹darce
+# 2. FunkcjonalnoÅ›ci aplikacji
+Aplikacja posiada nastÄ™pujÄ…ce funkcjonalnoÅ›ci:
+- zbieranie danych z poszczegÃ³lnych sklepÃ³w internetowych
+- prezentowanie tych odpowiednio przetworzonych danych uÅ¼ytkownikowi
+- klikniÄ™cie w logo sklepu otwiera witrynÄ™ sklepu w przeglÄ…darce
+- dÅ‚uÅ¼sze klikniÄ™cie w obrazek produktu otwiera jego kartÄ™ w przeglÄ…darce
   
- -# Zrzuty ekranu z aplikacji:
- +# 3. Zrzuty ekranu z aplikacji
+# Zrzuty ekranu z aplikacji:
+# 3. Zrzuty ekranu z aplikacji
   <p align="center">
     <img src="http://i.imgur.com/jtrYEKB.png" width="270" height="480"/>
     <img src="http://i.imgur.com/fEyFZPR.png" width="270" height="480"/>
