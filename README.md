@@ -1,5 +1,5 @@
 # 1 Okazjo-łowca (occasionFinderAndroid)
-Głównym zadaniem aplikacji jest zbieranie informacji o okazjach (zwykle zwanymi 'Gorący strzał' luib 'Okazja Dnia') z wybranych sklepów internetowych w Polsce i przedstawienie ich użytkownikowi w jednym miejscu. Aplikacja wymaga do działania połączenia z internetem w trakcie uruchamiania, jeśli takiego połączenia nie ma, użytkownik zostanie o tym odpowiednio poinformowany.
+Głównym zadaniem aplikacji jest zbieranie informacji o okazjach (zwykle zwanymi 'Gorący strzał' luib 'Okazja Dnia') z wybranych sklepów internetowych w Polsce i przedstawienie ich użytkownikowi w jednym miejscu. Aplikacja wymaga do działania połączenia z internetem w trakcie uruchamiania, jeśli takiego połączenia nie ma, użytkownik zostanie o tym odpowiednio poinformwoany.
 
 # 2. Funkcjonalności aplikacji
 Aplikacja posiada następujące funkcjonalności:
