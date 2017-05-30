@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="F:\Development\Projects\AndroidStudioProjects\occasionFinderAndroid\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="59bffd88dc9f7ab0f1bc15102e812781aeabecb1">
+        <dex dex="F:\Development\Projects\AndroidStudioProjects\occasionFinderAndroid\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_3b811875509e5a6c6b820a7c715bf31b2026a0b3\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="F:\Development\Projects\AndroidStudioProjects\occasionFinderAndroid\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="caff8e51a24901cfc9cd7e1cf83d84f4cb0c103b">
+        <dex dex="F:\Development\Projects\AndroidStudioProjects\occasionFinderAndroid\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_b4cce25b8342aea33aea53b718d2c919bd2fb57c\classes.dex" />
+    </item>
+
+</items>
