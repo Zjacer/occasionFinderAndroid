@@ -66,15 +66,13 @@ public class MainActivity extends AppCompatActivity {
                     return ZadowolenieFragment.newInstance();
                 case 4:
                     return AltoFragment.newInstance();
-                case 5:
-                    return AmforaFragment.newInstance();
             }
             return null;
         }
 
         @Override
         public int getCount() {
-            return 6;
+            return 5;
         }
 
         @Override
@@ -90,8 +88,6 @@ public class MainActivity extends AppCompatActivity {
                     return "ZADOWOLENIE";
                 case 4:
                     return "ALTO";
-                case 5:
-                    return "AMFORA";
             }
             return null;
         }

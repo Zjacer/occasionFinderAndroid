@@ -12,7 +12,6 @@ import java.util.concurrent.ExecutionException;
 
 public class DataGatherer {
 
-    private String shopName = "ND";
     private JSONObject jsonObject = null;
 
     Map<String,String> links = new HashMap<String, String>(){{
@@ -22,10 +21,6 @@ public class DataGatherer {
         put("alto","https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20html%20where%20url%3D'https%3A%2F%2Fal.to'%20and%20xpath%3D'%2F%2F*%5B%40id%3D%22hotShot%22%5D%2Fdiv%5B2%5D%20%7C%20%2F%2F*%5B%40id%3D%22pageWrapper%22%5D%2Fdiv%5B4%5D%2Fdiv%5B1%5D%2Fdiv%5B1%5D%2Fscript%2Ftext()'&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys");
         put("amfora","test");
     }};
-
-    private void setShop(String shop) {
-        this.shopName = shop;
-    }
 
     private JSONObject dataFromUrlToJSONObject(String shopName) {
 
@@ -41,7 +36,7 @@ public class DataGatherer {
     }
 
     // clearing variables won't be neccessary (every fragment uses different object)
-    private Map<String, String> getDataFromJSONobject(JSONObject jsonObject) throws JSONException {
+    private Map<String, String> getDataFromJSONobject(JSONObject jsonObject, String shopName) throws JSONException {
         Map<String, String> shopData = new HashMap<String, String>();
         JSONObject newObj = new JSONObject();
         JSONArray jsonArr = new JSONArray();
@@ -77,9 +72,11 @@ public class DataGatherer {
                 jsonArr = jsonArr.getJSONObject(1).getJSONArray("div").getJSONObject(2).getJSONObject("div").getJSONArray("div");
                 shopData.put("moreleItemOldPrice", jsonArr.getJSONObject(0).getString("span"));
                 shopData.put("moreleItemNewPrice", jsonArr.getJSONObject(1).getString("span"));
+
                 return shopData;
             case "zadowolenie":
                 newObj = jsonObject.getJSONObject("query").getJSONObject("results").getJSONObject("div").getJSONArray("p").getJSONObject(1).getJSONObject("a");
+                Log.d("APKA", newObj.toString());
                 shopData.put("zadowolenieItemName", newObj.getString("data-offer-name"));
                 shopData.put("zadowolenieItemOldPrice", "ND");
                 shopData.put("zadowolenieItemNewPrice", newObj.getString("data-offer-price"));
@@ -103,19 +100,15 @@ public class DataGatherer {
                 shopData.put("altoItemLinkUrl", "https://www.al.to" + strWithUrl.substring(urlStart, urlEnd));
 
                 return shopData;
-            case "amfora":
-
-                return shopData;
             default:
                 return null;
         }
     }
 
     public Map<String, String> getShopData(String shop) throws JSONException {
-        setShop(shop);
         JSONObject jsonObj = dataFromUrlToJSONObject(shop);
-        Map<String, String> map = getDataFromJSONobject(jsonObj);
-        Log.d("MAPA", shopName + "   " + map.toString());
+        Map<String, String> map = getDataFromJSONobject(jsonObj, shop);
+        Log.d("MAPA", shop + "   " + map.toString());
         return map;
     }
 }
