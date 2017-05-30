@@ -44,19 +44,8 @@ public class ZadowolenieFragment extends Fragment {
         }
 
         rootView.setBackgroundColor(Color.WHITE);
-        TextView tv1 = (TextView) rootView.findViewById(R.id.zadowolenie_textView);
-        TextView tv4 = (TextView) rootView.findViewById(R.id.zadowolenie_textView4);
-
-        tv1.setText(shopData.get("zadowolenieItemName"));
-        tv4.setText("Nowa cena: " + shopData.get("zadowolenieItemNewPrice") + " zł");
-        tv4.setTypeface(null, Typeface.BOLD_ITALIC);
 
         ImageView logo = (ImageView) rootView.findViewById(R.id.zadowolenie_imageView);
-        ImageView iv = (ImageView) rootView.findViewById(R.id.zadowolenie_imageView2);
-
-        new DownloadImageTask(iv).execute(shopData.get("zadowolenieItemImageUrl"));
-        iv.setAdjustViewBounds(true);
-
         // User can click logo to open shop in web browser
         logo.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
@@ -68,19 +57,32 @@ public class ZadowolenieFragment extends Fragment {
             }
         });
 
-        // User can long click image to open item tab in web browser
-        iv.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                Intent intent = new Intent();
-                intent.setAction(Intent.ACTION_VIEW);
-                intent.addCategory(Intent.CATEGORY_BROWSABLE);
-                intent.setData(Uri.parse(shopData.get("zadowolenieItemLinkUrl")));
-                startActivity(intent);
-                return true;
-            }
-        });
+        if(!shopData.isEmpty()) {
 
+            TextView tv1 = (TextView) rootView.findViewById(R.id.zadowolenie_textView);
+            TextView tv4 = (TextView) rootView.findViewById(R.id.zadowolenie_textView4);
+
+            tv1.setText(shopData.get("zadowolenieItemName"));
+            tv4.setText("Nowa cena: " + shopData.get("zadowolenieItemNewPrice") + " zł");
+            tv4.setTypeface(null, Typeface.BOLD_ITALIC);
+
+            ImageView iv = (ImageView) rootView.findViewById(R.id.zadowolenie_imageView2);
+            new DownloadImageTask(iv).execute(shopData.get("zadowolenieItemImageUrl"));
+            iv.setAdjustViewBounds(true);
+
+            // User can long click image to open item tab in web browser
+            iv.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    Intent intent = new Intent();
+                    intent.setAction(Intent.ACTION_VIEW);
+                    intent.addCategory(Intent.CATEGORY_BROWSABLE);
+                    intent.setData(Uri.parse(shopData.get("zadowolenieItemLinkUrl")));
+                    startActivity(intent);
+                    return true;
+                }
+            });
+        }
         return rootView;
     }
 }

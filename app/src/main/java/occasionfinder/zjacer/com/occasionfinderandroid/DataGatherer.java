@@ -76,7 +76,6 @@ public class DataGatherer {
                 return shopData;
             case "zadowolenie":
                 newObj = jsonObject.getJSONObject("query").getJSONObject("results").getJSONObject("div").getJSONArray("p").getJSONObject(1).getJSONObject("a");
-                Log.d("APKA", newObj.toString());
                 shopData.put("zadowolenieItemName", newObj.getString("data-offer-name"));
                 shopData.put("zadowolenieItemOldPrice", "ND");
                 shopData.put("zadowolenieItemNewPrice", newObj.getString("data-offer-price"));

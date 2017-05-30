@@ -45,24 +45,7 @@ public class MoreleFragment extends Fragment {
             }
         }
 
-        rootView.setBackgroundColor(Color.WHITE);
-        TextView tv1 = (TextView) rootView.findViewById(R.id.morele_textView);
-        TextView tv2 = (TextView) rootView.findViewById(R.id.morele_textView2);
-        TextView tv3 = (TextView) rootView.findViewById(R.id.morele_textView3);
-        TextView tv4 = (TextView) rootView.findViewById(R.id.morele_textView4);
-
-        tv1.setText(shopData.get("moreleItemName"));
-        tv2.setText(shopData.get("moreleItemOldPrice"));
-        tv2.setPaintFlags(tv2.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-        tv3.setText(shopData.get("moreleItemNewPrice"));
-        tv4.setText("Oszczędzasz: " + PriceReductionCalculator.calculateReduction(shopData.get("moreleItemOldPrice"), shopData.get("moreleItemNewPrice")));
-        tv4.setTypeface(null, Typeface.BOLD_ITALIC);
-
         ImageView logo = (ImageView) rootView.findViewById(R.id.morele_imageView);
-        ImageView iv = (ImageView) rootView.findViewById(R.id.morele_imageView2);
-
-        new DownloadImageTask(iv).execute(shopData.get("moreleItemImageUrl"));
-        iv.setAdjustViewBounds(true);
 
         // User can click logo to open shop in web browser
         logo.setOnClickListener(new View.OnClickListener(){
@@ -75,18 +58,40 @@ public class MoreleFragment extends Fragment {
             }
         });
 
-        // User can long click image to open item tab in web browser
-        iv.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                Intent intent = new Intent();
-                intent.setAction(Intent.ACTION_VIEW);
-                intent.addCategory(Intent.CATEGORY_BROWSABLE);
-                intent.setData(Uri.parse(shopData.get("moreleItemLinkUrl")));
-                startActivity(intent);
-                return true;
-            }
-        });
+        if(!shopData.isEmpty()) {
+
+            rootView.setBackgroundColor(Color.WHITE);
+            TextView tv1 = (TextView) rootView.findViewById(R.id.morele_textView);
+            TextView tv2 = (TextView) rootView.findViewById(R.id.morele_textView2);
+            TextView tv3 = (TextView) rootView.findViewById(R.id.morele_textView3);
+            TextView tv4 = (TextView) rootView.findViewById(R.id.morele_textView4);
+
+            tv1.setText(shopData.get("moreleItemName"));
+            tv2.setText(shopData.get("moreleItemOldPrice"));
+            tv2.setPaintFlags(tv2.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+            tv3.setText(shopData.get("moreleItemNewPrice"));
+            tv4.setText("Oszczędzasz: " + PriceReductionCalculator.calculateReduction(shopData.get("moreleItemOldPrice"), shopData.get("moreleItemNewPrice")));
+            tv4.setTypeface(null, Typeface.BOLD_ITALIC);
+
+            ImageView iv = (ImageView) rootView.findViewById(R.id.morele_imageView2);
+
+            new DownloadImageTask(iv).execute(shopData.get("moreleItemImageUrl"));
+            iv.setAdjustViewBounds(true);
+
+
+            // User can long click image to open item tab in web browser
+            iv.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    Intent intent = new Intent();
+                    intent.setAction(Intent.ACTION_VIEW);
+                    intent.addCategory(Intent.CATEGORY_BROWSABLE);
+                    intent.setData(Uri.parse(shopData.get("moreleItemLinkUrl")));
+                    startActivity(intent);
+                    return true;
+                }
+            });
+        }
 
         return rootView;
     }
